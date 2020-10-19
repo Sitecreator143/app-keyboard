@@ -141,7 +141,7 @@ body {
 
 .keyboard__key {
   height: 50px;
-  width: 6%;
+  width: 5%;
   max-width: 100px;
   margin: 4px;
   border-radius: 4px;
@@ -165,11 +165,11 @@ body {
 }
 
 .keyboard__key--wide {
-  width: 12%;
+  width: 10%;
 }
 
 .keyboard__key--extra-wide {
-  width: 36%;
+  width: 35%;
   max-width: 500px;
 }
 
@@ -186,4 +186,19 @@ body {
 
 .keyboard__key--active::after {
   background-color: #00c800;
+}
+
+@media (max-width: 800px) {
+  .keyboard__key {
+    width: 4%;
+    height: 40px;
+  }
+
+  .keyboard__key--wide {
+    width: 8%;
+  }
+
+  .keyboard__key--extra-wide {
+    width: 35%;
+  }
 }
