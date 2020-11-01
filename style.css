@@ -110,8 +110,13 @@ body {
   border: 2px solid black;
   border-radius: 10px;
   width: 80%;
-  margin: 50px auto;
+  margin: 20px auto;
   padding: 20px;
+  font-size: 1.5rem;
+}
+.display p {
+  width: 80%;
+  margin: 0 auto;
   font-size: 1.5rem;
 }
 
@@ -196,6 +201,21 @@ body {
 
   .keyboard__key--wide {
     width: 8%;
+  }
+
+  .keyboard__key--extra-wide {
+    width: 35%;
+  }
+}
+@media (max-width: 450px) {
+  .keyboard__key {
+    width: 3.5%;
+    font-size: 1rem;
+    margin: 2px;
+  }
+
+  .keyboard__key--wide {
+    width: 6%;
   }
 
   .keyboard__key--extra-wide {

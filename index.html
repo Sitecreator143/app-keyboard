@@ -21,13 +21,14 @@
         <div class="display">
             <h1 class="title">Virtual keyboard by Sitecreator143</h1>
             <textarea data-output placeholder="Write here"></textarea>
+            <p data-speech-helper>Подсказка для голосового набора</p>
         </div>
     
         <div class="keyboard keyboard--hidden" data-keyboard>
             <div class="keyboard__keys">
                 <div class="keyboard__first-row">
                     <button type="button" class="keyboard__key keyboard__key--wide" data-language>EN</button>
-                    <button type="button" class="keyboard__key" data-letter>1</button>
+                    <button type="button" class="keyboard__key" data-letter data-key="65">1</button>
                     <button type="button" class="keyboard__key" data-letter>2</button>
                     <button type="button" class="keyboard__key" data-letter>3</button>
                     <button type="button" class="keyboard__key" data-letter>4</button>
@@ -43,6 +44,7 @@
                 </div>
     
                 <div class="keyboard__second-row">
+                    <button type="button" class="keyboard__key keyboard__key--wide keyboard__key--activatable" data-speech><i class="fas fa-microphone-alt"></i></button>
                     <button type="button" class="keyboard__key" data-letter>q</button>
                     <button type="button" class="keyboard__key" data-letter>w</button>
                     <button type="button" class="keyboard__key" data-letter>e</button>
@@ -96,7 +98,7 @@
         </div>
     </div>
 
-
+    <audio data-key="65" src="sound/a.mp3"></audio>
 
 
     <script src="main.js"></script>

@@ -8,6 +8,8 @@ const outPut = document.querySelector('[data-output]')
 const keyBoard = document.querySelector('[data-keyboard]')
 const languageBtn = document.querySelector('[data-language]')
 const shiftBtn = document.querySelector('[data-shift]')
+const speechBtn = document.querySelector('[data-speech]')
+const speechHelper = document.querySelector('[data-speech-helper]')
 
 //По умолчанию английская раскладка, капс и шифт неактивны
 let languageEn = true
@@ -78,10 +80,12 @@ let pushLanguage = () => {
             languageEn = false //Переключаем на русскую
             letterChange(languageEn, capsLock, shift) //Вызываем функцию замены клавиш
             languageBtn.textContent = 'RU' //Меняем значение клавиши переключения языка
+            speechObject.lang = 'ru'
         } else { //Если русский, то наоборот
             languageEn = true 
             letterChange(languageEn, capsLock, shift)
             languageBtn.textContent = 'EN'
+            speechObject.lang = 'en'
         }
     })
 }
@@ -112,6 +116,45 @@ let pushShift = () => {
             shift = true
             letterChange(languageEn, capsLock, shift)
             shiftBtn.classList.add('keyboard__key--active')
+        }
+    })
+}
+
+//Функция включения записи речи
+let speech = false
+window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+const speechObject = new SpeechRecognition()
+speechObject.interimResults = true
+speechObject.lang = 'en' //Язык меняется в функции языка
+
+const pushSpeech = () => {
+    speechObject.addEventListener("result", function(e) {
+        let text = Array.from(e.results)
+        .map(result => result[0])
+        .map(result => result.transcript)
+        .join('')
+        speechHelper.innerHTML = text
+        if (e.results[0].isFinal) {
+            outPut.value += text
+            outPut.value += '\n'
+        }
+    })
+    speechObject.addEventListener("end", () => {
+        if (speech === true) {
+            speechObject.start()
+        }
+    })
+
+    speechBtn.addEventListener('click', () => {
+        if (speech === false) {
+            speech = true
+            speechObject.start()
+            speechBtn.classList.add('keyboard__key--active')
+        } else {
+            speech = false
+            console.log(speech)
+            speechBtn.classList.remove('keyboard__key--active')
+            speechObject.stop()
         }
     })
 }
@@ -159,17 +202,35 @@ let keyboardHiddenFunction = () => {
     })
 }
 
+/* function removeTransition(e) {
+    if (e.propertyName !== 'transform') return;
+    e.target.classList.remove('playing');
+  }
+
+  function playSound(e) {
+    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+    if (!audio) return;
+
+    key.classList.add('playing');
+    audio.currentTime = 0;
+    audio.play();
+  }
+
+  const keys = Array.from(document.querySelectorAll('.key'));
+  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+  window.addEventListener('keydown', playSound); */
+
+
+
 pushLanguage()
 pushCapslock()
 pushShift()
+pushSpeech()
 pushLetter()
 pushBackspace()
 pushEnter()
 pushSpace()
 keyBoardInit()
 keyboardHiddenFunction()
-
-
-
-
-
+playSound()
