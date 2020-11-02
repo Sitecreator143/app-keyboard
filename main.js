@@ -8,8 +8,6 @@ const outPut = document.querySelector('[data-output]')
 const keyBoard = document.querySelector('[data-keyboard]')
 const languageBtn = document.querySelector('[data-language]')
 const shiftBtn = document.querySelector('[data-shift]')
-const speechBtn = document.querySelector('[data-speech]')
-const speechHelper = document.querySelector('[data-speech-helper]')
 
 //По умолчанию английская раскладка, капс и шифт неактивны
 let languageEn = true
@@ -50,6 +48,109 @@ let russianLettersCapslock = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0', 
 'Ф', 'Ы', 'В', 'А', 'П', 'Р', 'О', 'Л', 'Д', 'Ж', 'Э', '\\', 
 'Я', 'Ч', 'С', 'М', 'И', 'Т', 'Ь', 'Б', 'Ю', '.']
 
+//Функция курсора
+const leftBtn = document.querySelector('[data-left]')
+const rightBtn = document.querySelector('[data-right]')
+let cursorFunction = () => {
+    leftBtn.addEventListener('click', () => {
+        outPut.selectionStart = outPut.selectionStart - 1
+        outPut.selectionEnd = outPut.selectionStart
+        outPut.focus()
+    })
+    rightBtn.addEventListener('click', () => {
+        outPut.selectionStart = outPut.selectionStart + 1
+        outPut.selectionEnd = outPut.selectionStart
+        outPut.focus()
+    })
+}
+cursorFunction()
+console.dir(outPut)
+
+
+//Функция озвучивания нажатия кнопки
+const audioBtn = document.querySelector('[data-audio]')
+let audio = {}
+let audioOn = true
+audioBtn.addEventListener('click', () => { 
+    if (audioOn) {
+        audioOn = false
+        audioBtn.classList.remove('keyboard__key--active')
+    } else {
+        audioOn = true
+        audioBtn.classList.add('keyboard__key--active')
+    }
+})
+function playSound(url) {
+    if (audioOn) {
+        if("pause" in audio) {
+            audio.pause() 
+        }
+        audio = new Audio(url)
+        audio.play()
+    }
+}
+
+//Функция включения записи речи
+const speechBtn = document.querySelector('[data-speech]')
+const speechHelper = document.querySelector('[data-speech-helper]')
+let speechFunction = () => {
+    if ('SpeechRecognition' in window || 'webkitSpeechRecognition' in window) {
+        let speech = false
+        window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
+    
+        let speechObject = new SpeechRecognition()
+        speechObject.interimResults = true
+        speechObject.lang = 'en' //Язык меняется в функции языка
+
+        let pushLanguageSpeech = () => { 
+            languageBtn.addEventListener('click', () => { //По нажатии клавиши языка
+                if (languageEn) { //Если сейчас (до нажатия) английская раскладка
+                    speechObject.lang = 'ru'
+                } else { //Если русский, то наоборот
+                    speechObject.lang = 'en'
+                }
+            })
+        }
+        pushLanguageSpeech()
+
+        const pushSpeech = () => {
+            speechObject.addEventListener("result", function(e) {
+                let text = Array.from(e.results)
+                .map(result => result[0])
+                .map(result => result.transcript)
+                .join('')
+                speechHelper.innerHTML = `${text}, язык распознавания: ${speechObject.lang}`
+                if (e.results[0].isFinal) {
+                    outPut.value += text
+                    outPut.value += '\n'
+                }
+            })
+            speechObject.addEventListener("end", () => {
+                if (speech === true) {
+                    speechObject.start()
+                }
+            })
+        
+            speechBtn.addEventListener('click', () => {
+                if (speech === false) {
+                    speech = true
+                    speechObject.start()
+                    speechBtn.classList.add('keyboard__key--active')
+                } else {
+                    speech = false
+                    console.log(speech)
+                    speechBtn.classList.remove('keyboard__key--active')
+                    speechObject.stop()
+                }
+            })
+        }
+        pushSpeech()
+    } else {
+        speechHelper.innerHTML = 'Браузер не поддерживает функцию распознавания речи'
+    }
+}
+speechFunction()
+
 //Функция, которая каждой клавише вписывает значение из массивов, в зависимости от раскладки, шифта и капса. Она вызывается при переключении раскладки, шифта и капса
 let letterChange = (languageEn, capsLock, shift) => {
     for (let i = 0; i < letterBtns.length; i++) {  //Для всех клавиш
@@ -80,12 +181,10 @@ let pushLanguage = () => {
             languageEn = false //Переключаем на русскую
             letterChange(languageEn, capsLock, shift) //Вызываем функцию замены клавиш
             languageBtn.textContent = 'RU' //Меняем значение клавиши переключения языка
-            speechObject.lang = 'ru'
         } else { //Если русский, то наоборот
             languageEn = true 
             letterChange(languageEn, capsLock, shift)
             languageBtn.textContent = 'EN'
-            speechObject.lang = 'en'
         }
     })
 }
@@ -120,50 +219,12 @@ let pushShift = () => {
     })
 }
 
-//Функция включения записи речи
-let speech = false
-window.SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
-const speechObject = new SpeechRecognition()
-speechObject.interimResults = true
-speechObject.lang = 'en' //Язык меняется в функции языка
-
-const pushSpeech = () => {
-    speechObject.addEventListener("result", function(e) {
-        let text = Array.from(e.results)
-        .map(result => result[0])
-        .map(result => result.transcript)
-        .join('')
-        speechHelper.innerHTML = text
-        if (e.results[0].isFinal) {
-            outPut.value += text
-            outPut.value += '\n'
-        }
-    })
-    speechObject.addEventListener("end", () => {
-        if (speech === true) {
-            speechObject.start()
-        }
-    })
-
-    speechBtn.addEventListener('click', () => {
-        if (speech === false) {
-            speech = true
-            speechObject.start()
-            speechBtn.classList.add('keyboard__key--active')
-        } else {
-            speech = false
-            console.log(speech)
-            speechBtn.classList.remove('keyboard__key--active')
-            speechObject.stop()
-        }
-    })
-}
-
 //Функция нажатия на букву
 let pushLetter = () => {
     for (let i = 0; i < letterBtns.length; i++) { //Каждой клавише из 46 подключаем обработчик событий
         letterBtns[i].addEventListener('click', () => {
             outPut.value += letterBtns[i].textContent //Добавляем в конце значения текстового поля букву из кнопки
+            outPut.focus()
         })
     }
 }
@@ -172,6 +233,7 @@ let pushLetter = () => {
 let pushBackspace = () => {
     backspaceBtn.addEventListener('click', () => {
         outPut.value = outPut.value.slice(0, -1) //Убираем в конце текста одну букву
+        outPut.focus()
     })
 }
 
@@ -179,6 +241,7 @@ let pushBackspace = () => {
 let pushEnter = () => {
     enterBtn.addEventListener('click', () => {
         outPut.value += '\n' //Добавляем в конце текста 
+        outPut.focus()
     })
 }
 
@@ -186,6 +249,7 @@ let pushEnter = () => {
 let pushSpace = () => { 
     spaceBtn.addEventListener('click', () => {
         outPut.value += ' ' //Добавляем в конце значения текстового поля пробел
+        outPut.focus()
     })
 }
 
@@ -202,35 +266,12 @@ let keyboardHiddenFunction = () => {
     })
 }
 
-/* function removeTransition(e) {
-    if (e.propertyName !== 'transform') return;
-    e.target.classList.remove('playing');
-  }
-
-  function playSound(e) {
-    const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
-    const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
-    if (!audio) return;
-
-    key.classList.add('playing');
-    audio.currentTime = 0;
-    audio.play();
-  }
-
-  const keys = Array.from(document.querySelectorAll('.key'));
-  keys.forEach(key => key.addEventListener('transitionend', removeTransition));
-  window.addEventListener('keydown', playSound); */
-
-
-
 pushLanguage()
 pushCapslock()
 pushShift()
-pushSpeech()
 pushLetter()
 pushBackspace()
 pushEnter()
 pushSpace()
 keyBoardInit()
 keyboardHiddenFunction()
-playSound()

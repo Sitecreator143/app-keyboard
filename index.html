@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -27,78 +27,79 @@
         <div class="keyboard keyboard--hidden" data-keyboard>
             <div class="keyboard__keys">
                 <div class="keyboard__first-row">
-                    <button type="button" class="keyboard__key keyboard__key--wide" data-language>EN</button>
-                    <button type="button" class="keyboard__key" data-letter data-key="65">1</button>
-                    <button type="button" class="keyboard__key" data-letter>2</button>
-                    <button type="button" class="keyboard__key" data-letter>3</button>
-                    <button type="button" class="keyboard__key" data-letter>4</button>
-                    <button type="button" class="keyboard__key" data-letter>5</button>
-                    <button type="button" class="keyboard__key" data-letter>6</button>
-                    <button type="button" class="keyboard__key" data-letter>7</button>
-                    <button type="button" class="keyboard__key" data-letter>8</button>
-                    <button type="button" class="keyboard__key" data-letter>9</button>
-                    <button type="button" class="keyboard__key" data-letter>0</button>
-                    <button type="button" class="keyboard__key" data-letter>-</button>
-                    <button type="button" class="keyboard__key" data-letter>=</button>
-                    <button type="button" class="keyboard__key keyboard__key--wide" data-backspace><i class="fas fa-backspace"></i></button>
+                    <button type="button" class="keyboard__key keyboard__key--wide" data-language onclick="playSound('sound/a.mp3'); return false;">EN</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">1</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">2</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">3</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">4</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">5</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">6</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">7</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">8</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">9</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">0</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">-</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">=</button>
+                    <button type="button" class="keyboard__key keyboard__key--wide" data-backspace onclick="playSound('sound/backspace.mp3'); return false;"><i class="fas fa-backspace"></i></button>
                 </div>
     
                 <div class="keyboard__second-row">
-                    <button type="button" class="keyboard__key keyboard__key--wide keyboard__key--activatable" data-speech><i class="fas fa-microphone-alt"></i></button>
-                    <button type="button" class="keyboard__key" data-letter>q</button>
-                    <button type="button" class="keyboard__key" data-letter>w</button>
-                    <button type="button" class="keyboard__key" data-letter>e</button>
-                    <button type="button" class="keyboard__key" data-letter>r</button>
-                    <button type="button" class="keyboard__key" data-letter>t</button>
-                    <button type="button" class="keyboard__key" data-letter>y</button>
-                    <button type="button" class="keyboard__key" data-letter>u</button>
-                    <button type="button" class="keyboard__key" data-letter>i</button>
-                    <button type="button" class="keyboard__key" data-letter>o</button>
-                    <button type="button" class="keyboard__key" data-letter>p</button>
-                    <button type="button" class="keyboard__key" data-letter>[</button>
-                    <button type="button" class="keyboard__key" data-letter>]</button>
+                    <button type="button" class="keyboard__key keyboard__key--wide keyboard__key--activatable" data-speech onclick="playSound('sound/a.mp3'); return false;"><i class="fas fa-microphone-alt"></i></button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">q</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">w</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">e</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">r</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">t</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">y</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">u</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">i</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">o</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">p</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">[</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">]</button>
+                    <button type="button" class="keyboard__key keyboard__key--wide keyboard__key--activatable keyboard__key--active" data-audio onclick="playSound('sound/a.mp3'); return false;"><i class="fas fa-music"></i></button>
                 </div>
     
                 <div class="keyboard__third-row">
-                    <button type="button" class="keyboard__key keyboard__key--wide keyboard__key--activatable" data-capslock><i class="fas fa-caret-up"></i></button>
-                    <button type="button" class="keyboard__key" data-letter>a</button>
-                    <button type="button" class="keyboard__key" data-letter>s</button>
-                    <button type="button" class="keyboard__key" data-letter>d</button>
-                    <button type="button" class="keyboard__key" data-letter>f</button>
-                    <button type="button" class="keyboard__key" data-letter>g</button>
-                    <button type="button" class="keyboard__key" data-letter>h</button>
-                    <button type="button" class="keyboard__key" data-letter>j</button>
-                    <button type="button" class="keyboard__key" data-letter>k</button>
-                    <button type="button" class="keyboard__key" data-letter>l</button>
-                    <button type="button" class="keyboard__key" data-letter>;</button>
-                    <button type="button" class="keyboard__key" data-letter>'</button>
-                    <button type="button" class="keyboard__key" data-letter>\</button>
-                    <button type="button" class="keyboard__key keyboard__key--wide" data-enter><i class="fas fa-greater-than"></i></button>
+                    <button type="button" class="keyboard__key keyboard__key--wide keyboard__key--activatable" data-capslock onclick="playSound('sound/caps.mp3'); return false;"><i class="fas fa-caret-up"></i></button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">a</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">s</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">d</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">f</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">g</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">h</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">j</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">k</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">l</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">;</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">'</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">\</button>
+                    <button type="button" class="keyboard__key keyboard__key--wide" data-enter onclick="playSound('sound/enter.mp3'); return false;"><i class="fas fa-greater-than"></i></button>
                 </div>
     
                 <div class="keyboard__fourth-row">
-                    <button type="button" class="keyboard__key keyboard__key keyboard__key--wide keyboard__key--activatable" data-shift>Shift</button>
-                    <button type="button" class="keyboard__key" data-letter>z</button>
-                    <button type="button" class="keyboard__key" data-letter>x</button>
-                    <button type="button" class="keyboard__key" data-letter>c</button>
-                    <button type="button" class="keyboard__key" data-letter>v</button>
-                    <button type="button" class="keyboard__key" data-letter>b</button>
-                    <button type="button" class="keyboard__key" data-letter>n</button>
-                    <button type="button" class="keyboard__key" data-letter>m</button>
-                    <button type="button" class="keyboard__key" data-letter>,</button>
-                    <button type="button" class="keyboard__key" data-letter>.</button>
-                    <button type="button" class="keyboard__key" data-letter>?</button>
-                    <button type="button" class="keyboard__key keyboard__key--wide" data-done><i class="fas fa-check-circle"></i></button>
+                    <button type="button" class="keyboard__key keyboard__key keyboard__key--wide keyboard__key--activatable" data-shift onclick="playSound('sound/shift.mp3'); return false;">Shift</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">z</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">x</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">c</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">v</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">b</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">n</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">m</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">,</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">.</button>
+                    <button type="button" class="keyboard__key" data-letter onclick="playSound('sound/a.mp3'); return false;">?</button>
+                    <button type="button" class="keyboard__key keyboard__key--wide" data-done onclick="playSound('sound/a.mp3'); return false;"><i class="fas fa-check-circle"></i></button>
                 </div>
     
                 <div class="keyboard__fifth-row">
-                    <button type="button" class="keyboard__key keyboard__key--extra-wide" data-space>___</i></button>
+                    <button type="button" class="keyboard__key keyboard__key--extra-wide" data-space onclick="playSound('sound/space.mp3'); return false;">___</i></button>
+                    <button type="button" class="keyboard__key keyboard__key--wide" data-left onclick="playSound('sound/space.mp3'); return false;"><i class="fas fa-long-arrow-alt-left"></i></button>
+                    <button type="button" class="keyboard__key keyboard__key--wide" data-right onclick="playSound('sound/space.mp3'); return false;"><i class="fas fa-long-arrow-alt-right"></i></button>
                 </div>
             </div>
         </div>
     </div>
-
-    <audio data-key="65" src="sound/a.mp3"></audio>
 
 
     <script src="main.js"></script>
