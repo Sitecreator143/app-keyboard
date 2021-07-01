@@ -4,7 +4,7 @@
 HTML  
 CSS(SCSS)  
 JavaScript  
-Упакован с помощью Prepros. В новых проектах использую Webpack  
+Упакован с помощью Webpack  
   
 Посмотреть работу приложения:  
 https://sitecreator143.github.io/app-keyboard
