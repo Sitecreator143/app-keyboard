@@ -1,7 +1,7 @@
 # App keyboard  
   
 Используемые технологии:  
-HTML  
+HTML(Pug)  
 CSS(SCSS)  
 JavaScript  
 Упакован с помощью Webpack  

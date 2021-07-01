@@ -1,99 +1,93 @@
 <!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap" rel="stylesheet">
-    <title>App keyboard</title>
-</head>
-<body>
-    <div class="container">
+html(lang="en")
+head
+  meta(charset="UTF-8")
+  meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0")
+  meta(http-equiv="x-ua-compatible", content="ie=edge")
+  link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css",integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==",crossorigin="anonymous")
+  link(href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700;900&display=swap", rel="stylesheet")
+  title App keyboard
+body
+  .container
+    .display
+      h1.title Virtual keyboard by Sitecreator143
+      textarea(data-output, placeholder="Write here")
+      p(data-speech-helper) Подсказка для голосового набора
 
-        <div class="display">
-            <h1 class="title">Virtual keyboard by Sitecreator143</h1>
-            <textarea data-output placeholder="Write here"></textarea>
-            <p data-speech-helper>Подсказка для голосового набора</p>
-        </div>
-    
-        <div class="keyboard keyboard--hidden" data-keyboard>
-            <div class="keyboard__keys">
-                <div class="keyboard__first-row">
-                    <button type="button" class="keyboard__key keyboard__key--wide" data-language>EN</button>
-                    <button type="button" class="keyboard__key" data-letter>1</button>
-                    <button type="button" class="keyboard__key" data-letter>2</button>
-                    <button type="button" class="keyboard__key" data-letter>3</button>
-                    <button type="button" class="keyboard__key" data-letter>4</button>
-                    <button type="button" class="keyboard__key" data-letter>5</button>
-                    <button type="button" class="keyboard__key" data-letter>6</button>
-                    <button type="button" class="keyboard__key" data-letter>7</button>
-                    <button type="button" class="keyboard__key" data-letter>8</button>
-                    <button type="button" class="keyboard__key" data-letter>9</button>
-                    <button type="button" class="keyboard__key" data-letter>0</button>
-                    <button type="button" class="keyboard__key" data-letter>-</button>
-                    <button type="button" class="keyboard__key" data-letter>=</button>
-                    <button type="button" class="keyboard__key keyboard__key--wide" data-backspace><i class="fas fa-backspace"></i></button>
-                </div>
-    
-                <div class="keyboard__second-row">
-                    <button type="button" class="keyboard__key keyboard__key--wide keyboard__key--activatable" data-speech><i class="fas fa-microphone-alt"></i></button>
-                    <button type="button" class="keyboard__key" data-letter>q</button>
-                    <button type="button" class="keyboard__key" data-letter>w</button>
-                    <button type="button" class="keyboard__key" data-letter>e</button>
-                    <button type="button" class="keyboard__key" data-letter>r</button>
-                    <button type="button" class="keyboard__key" data-letter>t</button>
-                    <button type="button" class="keyboard__key" data-letter>y</button>
-                    <button type="button" class="keyboard__key" data-letter>u</button>
-                    <button type="button" class="keyboard__key" data-letter>i</button>
-                    <button type="button" class="keyboard__key" data-letter>o</button>
-                    <button type="button" class="keyboard__key" data-letter>p</button>
-                    <button type="button" class="keyboard__key" data-letter>[</button>
-                    <button type="button" class="keyboard__key" data-letter>]</button>
-                    <button type="button" class="keyboard__key keyboard__key--wide keyboard__key--activatable keyboard__key--active" data-audio><i class="fas fa-music"></i></button>
-                </div>
-    
-                <div class="keyboard__third-row">
-                    <button type="button" class="keyboard__key keyboard__key--wide keyboard__key--activatable" data-capslock><i class="fas fa-caret-up"></i></button>
-                    <button type="button" class="keyboard__key" data-letter>a</button>
-                    <button type="button" class="keyboard__key" data-letter>s</button>
-                    <button type="button" class="keyboard__key" data-letter>d</button>
-                    <button type="button" class="keyboard__key" data-letter>f</button>
-                    <button type="button" class="keyboard__key" data-letter>g</button>
-                    <button type="button" class="keyboard__key" data-letter>h</button>
-                    <button type="button" class="keyboard__key" data-letter>j</button>
-                    <button type="button" class="keyboard__key" data-letter>k</button>
-                    <button type="button" class="keyboard__key" data-letter>l</button>
-                    <button type="button" class="keyboard__key" data-letter>;</button>
-                    <button type="button" class="keyboard__key" data-letter>'</button>
-                    <button type="button" class="keyboard__key" data-letter>\</button>
-                    <button type="button" class="keyboard__key keyboard__key--wide" data-enter><i class="fas fa-greater-than"></i></button>
-                </div>
-    
-                <div class="keyboard__fourth-row">
-                    <button type="button" class="keyboard__key keyboard__key keyboard__key--wide keyboard__key--activatable" data-shift>Shift</button>
-                    <button type="button" class="keyboard__key" data-letter>z</button>
-                    <button type="button" class="keyboard__key" data-letter>x</button>
-                    <button type="button" class="keyboard__key" data-letter>c</button>
-                    <button type="button" class="keyboard__key" data-letter>v</button>
-                    <button type="button" class="keyboard__key" data-letter>b</button>
-                    <button type="button" class="keyboard__key" data-letter>n</button>
-                    <button type="button" class="keyboard__key" data-letter>m</button>
-                    <button type="button" class="keyboard__key" data-letter>,</button>
-                    <button type="button" class="keyboard__key" data-letter>.</button>
-                    <button type="button" class="keyboard__key" data-letter>?</button>
-                    <button type="button" class="keyboard__key keyboard__key--wide" data-done><i class="fas fa-check-circle"></i></button>
-                </div>
-    
-                <div class="keyboard__fifth-row">
-                    <button type="button" class="keyboard__key keyboard__key--extra-wide" data-space>___</i></button>
-                    <button type="button" class="keyboard__key keyboard__key--wide" data-left><i class="fas fa-long-arrow-alt-left"></i></button>
-                    <button type="button" class="keyboard__key keyboard__key--wide" data-right><i class="fas fa-long-arrow-alt-right"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
+    .keyboard.keyboard--hidden(data-keyboard)
+      .keyboard__keys
+        .keyboard__first-row
+          button(type="button", data-language).keyboard__key.keyboard__key--wide EN
+          button(type="button", data-letter).keyboard__key 1
+          button(type="button", data-letter).keyboard__key 2
+          button(type="button", data-letter).keyboard__key 3
+          button(type="button", data-letter).keyboard__key 4
+          button(type="button", data-letter).keyboard__key 5
+          button(type="button", data-letter).keyboard__key 6
+          button(type="button", data-letter).keyboard__key 7
+          button(type="button", data-letter).keyboard__key 8
+          button(type="button", data-letter).keyboard__key 9
+          button(type="button", data-letter).keyboard__key 0
+          button(type="button", data-letter).keyboard__key -
+          button(type="button", data-letter).keyboard__key =
+          button(type="button", data-backspace).keyboard__key.keyboard__key--wide
+            i.fas.fa-backspace
 
-</body>
-</html>
+
+        .keyboard__second-row
+          button(type="button", data-speech).keyboard__key.keyboard__key--wide.keyboard__key--activatable
+            i.fas.fa-microphone-alt
+          button(type="button", data-letter).keyboard__key q
+          button(type="button", data-letter).keyboard__key w
+          button(type="button", data-letter).keyboard__key e
+          button(type="button", data-letter).keyboard__key r
+          button(type="button", data-letter).keyboard__key t
+          button(type="button", data-letter).keyboard__key y
+          button(type="button", data-letter).keyboard__key u
+          button(type="button", data-letter).keyboard__key i
+          button(type="button", data-letter).keyboard__key o
+          button(type="button", data-letter).keyboard__key p
+          button(type="button", data-letter).keyboard__key [
+          button(type="button", data-letter).keyboard__key ]
+          button(type="button", data-audio).keyboard__key.keyboard__key--wide.keyboard__key--activatable.keyboard__key--active
+            i.fas.fa-music
+
+        .keyboard__third-row
+          button(type="button", data-capslock).keyboard__key.keyboard__key--wide.keyboard__key--activatable
+            i.fas.fa-caret-up
+          button(type="button", data-letter).keyboard__key a
+          button(type="button", data-letter).keyboard__key s
+          button(type="button", data-letter).keyboard__key d
+          button(type="button", data-letter).keyboard__key f
+          button(type="button", data-letter).keyboard__key g
+          button(type="button", data-letter).keyboard__key h
+          button(type="button", data-letter).keyboard__key j
+          button(type="button", data-letter).keyboard__key k
+          button(type="button", data-letter).keyboard__key l
+          button(type="button", data-letter).keyboard__key ;
+          button(type="button", data-letter).keyboard__key '
+          button(type="button", data-letter).keyboard__key \
+          button(type="button", data-enter).keyboard__key.keyboard__key--wide
+            i.fas.fa-greater-than
+
+        .keyboard__fourth-row
+          button(type="button", data-shift).keyboard__key.keyboard__key--wide.keyboard__key--activatable Shift
+          button(type="button", data-letter).keyboard__key z
+          button(type="button", data-letter).keyboard__key x
+          button(type="button", data-letter).keyboard__key c
+          button(type="button", data-letter).keyboard__key v
+          button(type="button", data-letter).keyboard__key b
+          button(type="button", data-letter).keyboard__key n
+          button(type="button", data-letter).keyboard__key m
+          button(type="button", data-letter).keyboard__key ,
+          button(type="button", data-letter).keyboard__key .
+          button(type="button", data-letter).keyboard__key ?
+          button(type="button", data-done).keyboard__key.keyboard__key--wide
+            i.fas.fa-check-circle
+
+        .keyboard__fifth-row
+          button(type="button", data-space).keyboard__key.keyboard__key--extra-wide  ___
+          button(type="button", data-left).keyboard__key.keyboard__key--wide
+            i.fas.fa-long-arrow-alt-left
+          button(type="button", data-right).keyboard__key.keyboard__key--wide
+            i.fas.fa-long-arrow-alt-right
