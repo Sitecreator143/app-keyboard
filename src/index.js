@@ -63,7 +63,6 @@ let cursorFunction = () => {
     });
 }
 cursorFunction();
-console.dir(outPut);
 
 const audioBtn = document.querySelector('[data-audio]');
 let audio = {};
@@ -134,7 +133,6 @@ let speechFunction = () => {
                     speechBtn.classList.add('keyboard__key--active');
                 } else {
                     speech = false;
-                    console.log(speech);
                     speechBtn.classList.remove('keyboard__key--active');
                     speechObject.stop();
                 }

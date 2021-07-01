@@ -7,4 +7,4 @@ JavaScript
 Упакован с помощью Webpack  
   
 Посмотреть работу приложения:  
-https://sitecreator143.github.io/app-keyboard
+https://sitecreator143.github.io/app-keyboard/dist
