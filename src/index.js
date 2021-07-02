@@ -1,4 +1,4 @@
-import "./style.scss";
+import "./index.scss";
 
 const letterBtns = document.querySelectorAll("[data-letter]");
 const backspaceBtn = document.querySelector("[data-backspace]");
